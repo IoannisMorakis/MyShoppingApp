@@ -2,7 +2,14 @@ if(!self.define){let e,i={};const s=(s,n)=>(s=new URL(s+".js",n).href,i[s]||new 
 
 self.addEventListener('install', evt => {
     evt.waitUntil(
-      caches.open(CACHE_NAME).then(cache => cache.addAll(inputs))
+        caches.keys().then(function(names) {
+            for (let name of names)
+                caches.open(name).then(cache => cache.addAll(inputs));
+                //caches.delete(name);
+                
+        })
+
+      
     )
   })
 
