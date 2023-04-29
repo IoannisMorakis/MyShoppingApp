@@ -19,6 +19,15 @@
 
             navigator.serviceWorker.register('./sw.js');
 
+            /*
+            caches.keys().then(function(names) {
+                for (let name of names)
+                    //caches.open(name).then(cache => cache.addAll(inputs));
+                    caches.delete(name);
+                    
+            })
+            */
+
           });
           
 
