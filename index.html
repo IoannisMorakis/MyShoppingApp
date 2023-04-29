@@ -19,10 +19,12 @@
 
           window.addEventListener('load', () => {
             //
+            /*
             caches.keys().then(function(names) {
                 for (let name of names)
                     caches.delete(name);
             });
+            */
             //
 
             navigator.serviceWorker.register('./sw.js');
