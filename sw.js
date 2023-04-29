@@ -4,8 +4,8 @@ self.addEventListener('install', evt => {
     evt.waitUntil(
         caches.keys().then(function(names) {
             for (let name of names)
-                caches.open(name).then(cache => cache.addAll(inputs));
-                //caches.delete(name);
+                //caches.open(name).then(cache => cache.addAll(inputs));
+                caches.delete(name);
                 
         })
 

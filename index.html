@@ -15,19 +15,10 @@
         //Chech that service walker are suppoerted
         if ('serviceWorker' in navigator) {
           //Use the window load event to keep the page load performant
-
-
           window.addEventListener('load', () => {
-            //
-            /*
-            caches.keys().then(function(names) {
-                for (let name of names)
-                    caches.delete(name);
-            });
-            */
-            //
 
             navigator.serviceWorker.register('./sw.js');
+
           });
           
 
