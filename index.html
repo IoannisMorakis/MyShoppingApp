@@ -17,13 +17,12 @@
           //Use the window load event to keep the page load performant
           window.addEventListener('load', () => {
 
-            navigator.serviceWorker.register('./sw.js');
-
             navigator.serviceWorker.ready.then((registration) => {
               registration.update();
             });
 
-            
+            navigator.serviceWorker.register('./sw.js');
+
 
           });
           
