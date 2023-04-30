@@ -6,18 +6,16 @@ const itemsDiv = document.getElementById('itemsDiv');
 const totalPriceDiv = document.getElementById('totalPriceDiv');
 
 
-
+let root = document.getElementById('root');
 
 
 const clearCache= () => {
-    windows.location.reload(true)
+    root.innerHTML += 'Cache cleared using location.reload(true)'
+    window.location.reload(true)
 }
   
 
 const populateItemsDiv = async () => {
-
-    clearCache();
-    
     const allItems = await db.items.reverse().toArray();
 
     itemsDiv.innerHTML = allItems.map(item => `
@@ -51,7 +49,7 @@ const populateItemsDiv = async () => {
 
   
 
-window.onload = populateItemsDiv;
+window.onload = populateItemsDiv, clearCache;
 
 itemForm.onsubmit = async (event) => {
     event.preventDefault();
