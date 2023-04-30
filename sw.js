@@ -38,7 +38,6 @@ define(["./workbox-5b9d4414"],(function(e){
 
 
 
-
 /*
 self.addEventListener('install', evt => {
     evt.waitUntil(
