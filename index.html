@@ -13,31 +13,31 @@
     <!-- <script src="https://unpkg.com/dexie/dist/dexie.js"></script>-->
     <script>
         //Chech that service walker are suppoerted
-        /*if ('serviceWorker' in navigator) {
+        if ('serviceWorker' in navigator) {
           //Use the window load event to keep the page load performant
           window.addEventListener('load', () => {
 
             //
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for(let registration of registrations) {
-                    registration.unregister();
-                } 
-            });
+            //navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                //for(let registration of registrations) {
+                    //registration.unregister();
+                //} 
+            //});
             //
             
 
             navigator.serviceWorker.register('./sw.js');
 
             //
-            navigator.serviceWorker.ready.then((registration) => {
-              registration.update();
-            });
+            //navigator.serviceWorker.ready.then((registration) => {
+              //registration.update();
+            //});
             //
 
           });
           
 
-        }*/
+        }
     </script>
 </head>
 <body>
