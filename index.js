@@ -6,6 +6,13 @@ const itemsDiv = document.getElementById('itemsDiv');
 const totalPriceDiv = document.getElementById('totalPriceDiv');
 
 
+let root = document.getElementById('root');
+
+
+const clearCache= () => {
+    root.innerHTML += 'Cache cleared using location.reload(true)'
+    windows.location.reload(true)
+}
   
 
 const populateItemsDiv = async () => {
@@ -42,7 +49,7 @@ const populateItemsDiv = async () => {
 
   
 
-window.onload = populateItemsDiv;
+window.onload = populateItemsDiv, clearCache;
 
 itemForm.onsubmit = async (event) => {
     event.preventDefault();
