@@ -69,6 +69,7 @@
                 console.log('Updating');
                 invokeServiceWorkerUpdateFlow(registration);
               }
+              console.log(registration.waiting);
 
               registration.waiting.postMessage('SKIP_WAITING');
 
