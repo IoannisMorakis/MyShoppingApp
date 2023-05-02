@@ -39,6 +39,7 @@ define(["./workbox-5b9d4414"],(function(e){
 self.addEventListener('message', (event) => {
     if (event.data === 'SKIP_WAITING') {
         self.skipWaiting();
+        console.log('Skip');
     }
 });
 
