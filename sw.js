@@ -15,7 +15,8 @@ if(!self.define){
         const d=e||("document"in self?document.currentScript.src:"")||location.href;if(i[d])return;
         let o={};
         const t=e=>s(e,d),c={module:{uri:d},exports:o,require:t};
-        i[d]=Promise.all(n.map((e=>c[e]||t(e)))).then((e=>(r(...e),o)))}
+        i[d]=Promise.all(n.map((e=>c[e]||t(e)))).then((e=>(r(...e),o)))
+    };
 }
         
 define(["./workbox-5b9d4414"],(function(e){
