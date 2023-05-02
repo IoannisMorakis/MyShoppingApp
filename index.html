@@ -60,6 +60,13 @@
           // wait for the page to load
           window.addEventListener('load', async () => {
               // register the service worker from the file specified
+              navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for(let registration of registrations) {
+                    registration.unregister();
+                } 
+              });
+
+
               const registration = await navigator.serviceWorker.register('./sw.js');
               console.log('Register');
               
@@ -71,7 +78,7 @@
               }
               console.log(registration.waiting);
 
-              registration.skipWaiting();
+              //registration.skipWaiting();
 
               // detect Service Worker update available and wait for it to become installed
               registration.addEventListener('updatefound', () => {
