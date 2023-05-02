@@ -35,14 +35,20 @@
 
       function invokeServiceWorkerUpdateFlow(registration) {
           // TODO implement your own UI notification element
-          notification=new Notification('Update');
-          notification.show("New version of the app is available. Refresh now?");
-          notification.addEventListener('click', () => {
+
+          //let title = "Update";
+          //let icon = 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png';
+          //let body = "It's Your boarding time";
+          //var notification = new Notification(title, { body, icon });
+          //notification.show("New version of the app is available. Refresh now?");
+          //notification.addEventListener('click', () => {
+
+          alert("New version of the app is available. Refresh now?");
+          alert.addEventListener('click', () => { 
               if (registration.waiting) {
                   // let waiting Service Worker know it should became active
                   registration.waiting.postMessage('SKIP_WAITING');
               }
-              notification.close();
           })
       }
 
@@ -67,10 +73,11 @@
                           if (registration.waiting) {
                               // if there's an existing controller (previous Service Worker), show the prompt
                               if (navigator.serviceWorker.controller) {
-                                  invokeServiceWorkerUpdateFlow(registration)
+                                  console.log('Updating');
+                                  invokeServiceWorkerUpdateFlow(registration);
                               } else {
                                   // otherwise it's the first install, nothing to do
-                                  console.log('Service Worker initialized for the first time')
+                                  console.log('Service Worker initialized for the first time');
                               }
                           }
                       })
