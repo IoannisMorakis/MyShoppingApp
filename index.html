@@ -71,7 +71,7 @@
               }
               console.log(registration.waiting);
 
-              registration.waiting.postMessage('SKIP_WAITING');
+              registration.skipWaiting();
 
               // detect Service Worker update available and wait for it to become installed
               registration.addEventListener('updatefound', () => {
