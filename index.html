@@ -14,10 +14,15 @@
     <!-- <script src="https://unpkg.com/dexie/dist/dexie.js"></script>-->
     <script>
       //Chech that service walker are suppoerted
-      /*if ('serviceWorker' in navigator) {
+      if ('serviceWorker' in navigator) {
         //Use the window load event to keep the page load performant
         window.addEventListener('load', () => {
-         
+          //navigator.serviceWorker.getRegistrations().then(function(registrations) {
+              //for(let registration of registrations) {
+                  //registration.unregister();
+              //} 
+            //});
+
         
           //
           navigator.serviceWorker.register('./sw.js');
@@ -26,26 +31,18 @@
             //registration.update();
           //});
           //
-        });
-      }*/
 
-      function invokeServiceWorkerUpdateFlow(registration) {
-          // TODO implement your own UI notification element
-
-          //let title = "Update";
-          //let icon = 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png';
-          //let body = "It's Your boarding time";
-          //var notification = new Notification(title, { body, icon });
-          //notification.show("New version of the app is available. Refresh now?");
-          //notification.addEventListener('click', () => {
-
-          alert("New version of the app is available. Refresh now?");
-          alert.addEventListener('click', () => { 
-              if (registration.waiting) {
-                  // let waiting Service Worker know it should became active
-                  registration.waiting.postMessage('SKIP_WAITING');
+          let refreshing = false;
+          // detect controller change and refresh the page
+          navigator.serviceWorker.addEventListener('controllerchange', () => {
+              if (!refreshing) {
+                window.location.reload()
+                refreshing = true
               }
           })
+
+
+        });
       }
 
 
@@ -56,12 +53,7 @@
           // wait for the page to load
           window.addEventListener('load', async () => {
               // register the service worker from the file specified
-              navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for(let registration of registrations) {
-                    registration.unregister();
-                } 
-              });
-
+              
 
               const registration = await navigator.serviceWorker.register('./sw.js');
               //console.log('Register');
@@ -97,15 +89,7 @@
                   }
               })
 
-              let refreshing = false;
-
-              // detect controller change and refresh the page
-              navigator.serviceWorker.addEventListener('controllerchange', () => {
-                  if (!refreshing) {
-                      window.location.reload()
-                      refreshing = true
-                  }
-              })
+              
           })
       }
 
