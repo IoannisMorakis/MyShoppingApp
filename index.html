@@ -35,12 +35,14 @@
 
       function invokeServiceWorkerUpdateFlow(registration) {
           // TODO implement your own UI notification element
+          notification=new Notification('Update');
           notification.show("New version of the app is available. Refresh now?");
           notification.addEventListener('click', () => {
               if (registration.waiting) {
                   // let waiting Service Worker know it should became active
-                  registration.waiting.postMessage('SKIP_WAITING')
+                  registration.waiting.postMessage('SKIP_WAITING');
               }
+              notification.close();
           })
       }
 
